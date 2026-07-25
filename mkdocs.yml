@@ -1,0 +1,15 @@
+site_name: QA TechStore
+
+theme:
+  name: material
+  language: pt-BR
+
+nav:
+  - Home: index.md
+  - Overview: overview.md
+  - Requirements: requirements.md
+  - QA Strategy: qa-strategy.md
+  - API: api.md
+
+extra_css:
+  - styles/style.css
