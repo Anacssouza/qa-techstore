@@ -1,5 +1,9 @@
-/*
- 
- styles part from docs
+/* Header no modo claro */
+[data-md-color-scheme="default"] .md-header {
+    background-color: #0B1F33;
+}
 
-*/
+/* Header no modo dark */
+[data-md-color-scheme="slate"] .md-header {
+    background-color: #FF4300
+}

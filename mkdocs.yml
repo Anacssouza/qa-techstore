@@ -4,6 +4,17 @@ theme:
   name: material
   language: pt-BR
 
+  palette:
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
 nav:
   - Home: index.md
   - Overview: overview.md

@@ -3,6 +3,7 @@
  - The purpose of this page is to describe the functional and business requirements of the TechStore ecommerce system.
  - This document contains the main rules, validations and expected behaviors for each feature.
 
+
 ## Sign up
     
 ### Description    
