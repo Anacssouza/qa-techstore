@@ -193,27 +193,84 @@
 - When the user clicks the Delete button, the system must display a confirmation modal
 - The confirmation modal must have the following information:
    - Title: Do you really want to delete this address?
-   - Text: This action cannot be undone.
-   - Button "Yes", clicking this button must permanently delete the selected address.
-   - Button "No", The modal must be closed without deleting the address.
-- If the user clicks the "Yes" button in the confirmation modal, the selected address must be permanently deleted and a toast message saying "Address successfully deleted." must be displayed.
+   - Text: This action cannot be undone
+   - Button "Yes", clicking this button must permanently delete the selected address
+   - Button "No", The modal must be closed without deleting the address
+- If the user clicks the "Yes" button in the confirmation modal, the selected address must be permanently deleted and a toast message saying "Address successfully deleted." must be displayed
 
 ## Home Page
 ### Description
+The Home Page displays featured products and provides quick access to the main sections of the e-commerce platform
+
 ### Business Rules
+- The Home Page must display featured products, product categories and navigation shortcuts
+- Both authenticated and unauthenticated users must be able to access the Home Page
+- Users must be able to add products to the cart directly from the product card
+- Users must be able to access the Product Page by clicking on a product card
+- Users must be able to access the available shortcuts from the Home Page
+- Only active products must be displayed
+
 ### Data Requirements
+ - Product
+ - ProductCategory
 
 ## Product Categories
 ### Description
+Products must be organized into categories to facilitate browsing and navigation
 ### Business Rules
+- Each category must contain at least one product
+- A category can contain multiple products
+- The system must have a specific category listing page
+- Each category must have a dedicated page displaying its products
+- Only active categories must be displayed
+
 ### Data Requirements
+- productCategory:
+   - ID
+   - categoryName
+   - productQty
+   - isActive
 
 ## Product Page
+### Description
+The Product Page displays detailed information about a selected product.
+
+### Business Rules
+- The products page must display the following information:
+   - Product Images
+   - Product name
+   - Product category
+   - Product price
+   - Product description
+   - Button to add the product to the cart
+   - A link or button to return to the Home Page or Category Page
+- If a product does not exist, the system must display a "Product Not Found" page
+- A product may exist without being assigned to a category
+- Users must not be able to add unavailable products to the cart
+- Only active products must be accessible.
+
+### Data Requirements
+- Product: 
+   - ID
+   - categoryID (Foreign key -> productCategory.ID)
+   - name
+   - price
+   - description
+   - Quantity
+   - isActive
+
+- ProductImage
+   - ID
+   - productID (Foreign key -> product.ID)
+   - name
+   - altText
+   - image
+
+## Search Page
 ### Description
 ### Business Rules
 ### Data Requirements
 
-## Search Page
 
 ## Add to cart
 
@@ -232,3 +289,5 @@
 ## Order page
 
 ## Order history
+
+## Header & Navigation
