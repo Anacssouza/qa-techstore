@@ -20,8 +20,9 @@
  - Username, identification number and email must be unique
  - Cellphone and email must have valid formats
  - all fields are mandatory
- - The system must display an error message when a field contains invalid information.
+ - The system must display an error message when a field contains invalid information
  - Users must not be able to complete registrations if the information is invalid
+ - The system must not allow duplicate email addresses
 
 ### Data Requirements 
  - User 
@@ -47,6 +48,7 @@
  - The system must display an error message when a field contains invalid information.
  - Users must not be able to authenticate with invalid credentials
  - After successful authentication, the user must be redirect to the home page
+ - The system must treat usernames, email and password addresses as case-insensitive
 
 ### Data Requirements 
  - User 
@@ -83,6 +85,7 @@
    - At least one uppercase letter.
    - At least one lowercase letter.
    - At least one number.
+- Recovery links or verification codes must expire after a predefined period
 
 ### Data Requirements 
  - User 
@@ -247,7 +250,8 @@ The Product Page displays detailed information about a selected product.
 - If a product does not exist, the system must display a "Product Not Found" page
 - A product may exist without being assigned to a category
 - Users must not be able to add unavailable products to the cart
-- Only active products must be accessible.
+- Only active products must be accessible
+- Products with multiple images must allow users to browse all available images
 
 ### Data Requirements
 - Product: 
@@ -268,15 +272,114 @@ The Product Page displays detailed information about a selected product.
 
 ## Search Page
 ### Description
-### Business Rules
-### Data Requirements
+ The Search Page displays products related to the search term entered by the user.
 
+### Business Rules
+ - When the user searches for a term in the search field located in the header, the system must display a list of related products
+ - Only products related to the search term must be displayed.
+ - Search results must be displayed as product cards containing the following information:
+   - Product image
+   - Name
+   - Description
+   - Price
+   - Button to add to the cart
+   - Quantity selector
+ - If no products match the search term, the system must display a "No products found" message
+ - The search must be case-insensitive
+ - The search must support partial matches
+ - Only active products must be displayed
+ - Users must be able to access the Product Page by clicking on a product card
+ - Search results may be displayed across multiple pages when the number of results exceeds the page limit
+
+### Data Requirements
+ - Product
+ - ProductImage
 
 ## Add to cart
+### Description
+ The system must allow users to add products to the shopping cart
+
+### Business Rules
+ - When the user clicks the "Add to Cart" button on a product card, the selected product must be added to the cart
+ - When the user clicks the "Add to Cart" button on the Product Page, the selected product must be added to the cart
+ - Users must be able to select the quantity of a product before adding it to the cart
+ - Users must not be able to add inactive products to the cart
+ - Users must not be able to add products that are out of stock
+ - The selected quantity must not exceed the available stock
+
+### Data Requirements
+ - Product
+ - Cart
 
 ## Mini cart
+### Description
+ The Mini Cart provides a summary of the products currently added to the shopping cart
+
+### Business Rules
+ - When the user clicks the cart icon in the header, the Mini Cart must be displayed
+ - The Mini Cart must display the following information:
+   - Products images
+   - Products names
+   - Products descriptions
+   - Products prices
+   - Products quantity
+   - Button to access the Cart Page
+- Users must only be able to view their own Mini Cart
+- Any changes made to the cart must be immediately reflected in the Mini Cart
+- The Mini Cart must always reflect the current state of the Cart
+
+### Data Requirements
+ - Cart
+ - CartItem
 
 ## Cart
+### Description
+ The Cart Page displays all products selected by the user, including quantities, prices and order totals
+
+### Business Rules
+ - The Cart Page must display all products added by the user
+ - The system must display a message when a product is no longer available
+ - The cart must display the products in a list, with the following information for each cart item:
+   - Product image
+   - Product name
+   - Product description
+   - Product price
+   - Product subtotal
+   - Button to remove the item from the cart
+   - quantity selector
+- When the user changes the quantity of a product, the cart must be updated immediately
+- The selected quantity must not exceed the available stock
+- Any changes made to the cart must immediately update the item subtotal and the cart total
+- It must have a block with the following information:
+   - Total number of items
+   - Subtotal
+   - Discounts
+   - Shipping cost estimate
+   - Order total
+- Both authenticated and unauthenticated users must be able to access the Cart Page.
+- Users must only be able to access their own cart
+- Removing the last product from the cart must display an "Empty Cart" message
+- The cart must persist throughout the user's session
+- Products with quantity equal to zero must be removed from the cart
+- Authenticated users must be able to proceed to the Checkout process by clicking the "Continue" button
+- Unauthenticated users must not be able to access the Checkout process
+- When unauthenticated users click on the continue button, they must be redirected to the login page (After successful authentication, users must be redirected back to the Cart Page)
+- The cart must prevent duplicate cart items by updating the quantity of an existing product instead of creating a new entry
+- The cart must automatically recalculate totals whenever a product is added, removed or updated
+
+### Data Requirements
+ - Cart
+   - ID
+   - UserID
+   - CreatedAt
+   - UpdatedAt
+- CartItem
+   - ID
+   - CartID
+   - ProductID
+   - Quantity
+   - UnitPrice
+   - Subtotal
 
 ## Address
 
